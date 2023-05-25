@@ -3,7 +3,16 @@ const asyncHandler = require("express-async-handler");
 
 // Get car home page
 exports.index = asyncHandler(async(req, res, next) => {
-    res.send("NOT IMPLEMENTED: Site Home Page");
+    // Get details of cars
+    const numCars = await Car.countDocuments({});
+    const usedCarCount = await Car.countDocuments({ condition: "Used" });
+    const newCarCount = await Car.countDocuments({ condition: "New" });
+    res.render("index", { 
+        title: "Car Inventory", 
+        cars: numCars,
+        usedCars: usedCarCount,
+        newCars: newCarCount
+    });
 });
 
 
