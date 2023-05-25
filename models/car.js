@@ -11,4 +11,10 @@ const CarSchema = new Schema({
     condition: { type: String, enum: ["New", "Used"], required: true },
 });
 
+// Virtual for book's URL
+CarSchema.virtual("url").get(function () {
+
+    return `/catalog/cars/${this._id}`;
+  });
+
 module.exports = mongoose.model("Car", CarSchema);
