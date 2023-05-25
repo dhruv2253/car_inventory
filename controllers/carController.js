@@ -1,6 +1,12 @@
 const Car = require("../models/car");
 const asyncHandler = require("express-async-handler");
 
+// Get car home page
+exports.index = asyncHandler(async(req, res, next) => {
+    res.send("NOT IMPLEMENTED: Site Home Page");
+});
+
+
 // Display list of all cars.
 exports.car_list = asyncHandler(async(req, res, next) => {
     res.send("NOT IMPLEMENTED: Car list");
