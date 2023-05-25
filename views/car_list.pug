@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+
+  ul
+    each car in car_list
+      li
+        a(href=car.url) #{car.year} #{car.make} #{car.model}
+    else
+      li There are no cars.
