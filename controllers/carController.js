@@ -18,7 +18,8 @@ exports.index = asyncHandler(async(req, res, next) => {
 
 // Display list of all cars.
 exports.car_list = asyncHandler(async(req, res, next) => {
-    res.send("NOT IMPLEMENTED: Car list");
+    const allCars = await Car.find({}, "year make model").sort({make: 1}).exec();
+    res.render("car_list", { title: "Car List", car_list: allCars });
 });
 
 // Display detail page for a specific car.
