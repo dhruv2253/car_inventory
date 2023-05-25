@@ -8,7 +8,7 @@ const CarSchema = new Schema({
     year: { type: Number, required: true, maxlength: 4 },
     price: { type: Number, required: true, maxlength: 10 },
     distance: { type: Number, required: true, maxlength: 10 },
-    category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
+    condition: { type: String, enum: ["New", "Used"], required: true },
 });
 
 module.exports = mongoose.model("Car", CarSchema);
