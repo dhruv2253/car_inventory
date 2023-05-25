@@ -3,3 +3,17 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  p We currently have #{cars} cars in our inventory.
+  if usedCars > 0 && newCars == 0
+    p #[strong Used:] #{usedCars}
+  else if newCars > 0 && usedCars == 0
+    p #[strong New:] #{newCars}
+  else if usedCars > 0 && newCars > 0
+    p #[strong Used:] #{usedCars}
+    p #[strong New:] #{newCars}
+  else
+    p We don't have any cars in our inventory.
+
+  
+  
