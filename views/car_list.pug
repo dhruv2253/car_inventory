@@ -1,22 +1,24 @@
 extends layout
 
 block content
-  h1= title
-
-  ul
-    h5 Used
-    each car in car_list
-        
-        if car.condition == "Used"
-            li
-                a(href=car.url) #{car.year} #{car.make} #{car.model}
-    else
-        li There are no cars.
-    
-    h5 New
-    each car in car_list
-        if car.condition == "New"
-            li
-                a(href=car.url) #{car.year} #{car.make} #{car.model}
-    else
-        li There are no cars.
+    h1.title= title
+    div.list-container
+        div.used-cars
+            h5.condition-title Used
+            ul.car-list
+                each car in car_list
+                    
+                    if car.condition == "Used"
+                        li.cars
+                            a(href=car.url) #{car.year} #{car.make} #{car.model}
+                else
+                    li There are no cars.
+        div.new-cars
+            h5.condition-title New
+            ul.car-list
+                each car in car_list
+                    if car.condition == "New"
+                        li.cars
+                            a(href=car.url) #{car.year} #{car.make} #{car.model}
+                else
+                    li There are no cars.

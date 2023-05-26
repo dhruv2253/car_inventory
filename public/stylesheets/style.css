@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  
 }
 
 a {
@@ -8,7 +9,39 @@ a {
 }
 
 .sidebar-nav {
+  
+  margin-top: 20px;
+  padding: 20px;
+  list-style: none;
+  font-size: 20px;
+}
+
+.car-list {
   margin-top: 20px;
   padding: 0;
   list-style: none;
 }
+
+.cars {
+  padding: 5px;
+}
+
+.list-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.used-cars {
+  justify-content: center;
+}
+
+.new-cars {
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
