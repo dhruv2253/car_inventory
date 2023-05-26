@@ -4,8 +4,19 @@ block content
   h1= title
 
   ul
+    h5 Used
     each car in car_list
-      li
-        a(href=car.url) #{car.year} #{car.make} #{car.model}
+        
+        if car.condition == "Used"
+            li
+                a(href=car.url) #{car.year} #{car.make} #{car.model}
     else
-      li There are no cars.
+        li There are no cars.
+    
+    h5 New
+    each car in car_list
+        if car.condition == "New"
+            li
+                a(href=car.url) #{car.year} #{car.make} #{car.model}
+    else
+        li There are no cars.
