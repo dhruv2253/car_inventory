@@ -99,9 +99,14 @@ const carsData = [
     distance: 12000,
     condition: "New",
   },
-
-
-  // Add more sample car data here
+  {
+    make: "Audi",
+    model: "Q5",
+    year: 2021,
+    price: 50000,
+    distance: 20000,
+    condition: "Used",
+  },
 ];
 
 main().catch((err) => console.log(err));
