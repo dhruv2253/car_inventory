@@ -18,7 +18,7 @@ exports.index = asyncHandler(async(req, res, next) => {
 
 // Display list of all cars.
 exports.car_list = asyncHandler(async(req, res, next) => {
-    const allCars = await Car.find({}, "year make model").sort({make: 1}).exec();
+    const allCars = await Car.find({}, "year make model condition").sort({make: 1}).exec();
     res.render("car_list", { title: "Car List", car_list: allCars });
 });
 
