@@ -17,10 +17,10 @@ block content
             option(value='Used' selected=(undefined===car ? false : 'selected') ) Used
     div.form-group
         label(for="year") Year:
-        input#year.form-control(type="number" placeholder="YYYY" name="year" min="1900" max="2099")
+        input#year.form-control(type="number" placeholder="YYYY" name="year" min="1900" max="2099" value=(undefined===car ? '' : car.year) required="true")
     div.form-group
-        label(for='mileage') Mileage:
-        input#mileage.form-control(type='text', placeholder='mileage' name='mileage' value=(undefined===book ? '' : car.mileage) required='true')
+        label(for='distance') Mileage:
+        input#mileage.form-control(type='number', placeholder='mileage' name='distance' value=(undefined===car ? '' : car.distance) required='true')
     div.form-group
     div.form-group
         label(for='price') Price:
