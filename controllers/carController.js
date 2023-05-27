@@ -24,7 +24,13 @@ exports.car_list = asyncHandler(async(req, res, next) => {
 
 // Display detail page for a specific car.
 exports.car_detail = asyncHandler(async(req, res, next) => {
-    res.send("NOT IMPLEMENTED: Car detail: " + req.params.id);
+    const car = await Car.findById(req.params.id);
+    if (car === null) {
+        const err = new Error("Car not found");
+        err.status = 404;
+        return next(err);
+    }
+    res.render("car_detail", { title: "Car Detail", car: car });
 });
 
 // Display car create form on GET.
