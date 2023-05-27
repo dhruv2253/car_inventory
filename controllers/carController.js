@@ -98,12 +98,25 @@ exports.car_delete_post = asyncHandler(async(req, res, next) => {
 
 // Display car update form on GET.
 exports.car_update_get = asyncHandler(async(req, res, next) => {
-    res.send("NOT IMPLEMENTED: Car update GET");
+    const car = await Car.findById(req.params.id);
+    if (car === null) {
+        res.redirect("/catalog/cars");
+    }
+        
+    res.render("car_update", { title: "Update Car", car: car});
 });
 
 // Handle car update on POST.
-exports.car_update_post = asyncHandler(async(req, res, next) => {
-    res.send("NOT IMPLEMENTED: Car update POST");
-});
-
-
+exports.car_update_post = [
+    // Validate and sanitize fields.
+    body("make", "Make must not be empty.").trim().isLength({ min: 1 }).escape(),
+    body("model", "Model must not be empty.").trim().isLength({ min: 1 }).escape(),
+    body("year", "Year must not be empty.").trim().isLength({ min: 1 }).escape(),
+    body("price", "Price must not be empty.").trim().isLength({ min: 1 }).escape(),
+    body("distance", "Mileage must not be empty.").trim().isLength({ min: 1 }).escape(),
+    body("condition", "Condition must not be empty.").trim().isLength({ min: 1 }).escape(),
+    
+    asyncHandler(async(req, res, next) => {
+        res.send("NOT IMPLEMENTED: Car update POST");
+    }),
+]
