@@ -76,12 +76,24 @@ exports.car_create_post = [
 ]
 // Display car delete form on GET.
 exports.car_delete_get = asyncHandler(async(req, res, next) => {
-    res.send("NOT IMPLEMENTED: Car delete GET");
+    const car = await Car.findById(req.params.id);
+    if (car === null) {
+        res.redirect("/catalog/cars");
+    }
+        
+    res.render("car_delete", { title: "Delete Car", car: car});
 });
 
 // Handle car delete on POST.
 exports.car_delete_post = asyncHandler(async(req, res, next) => {
-    res.send("NOT IMPLEMENTED: Car delete POST");
+    try {
+        await Car.findByIdAndRemove(req.params.id);
+        console.log("Deleting car:", req.params.id); // Add this line
+        res.redirect("/catalog/cars");
+      } catch (err) {
+        return next(err);
+      }
+
 });
 
 // Display car update form on GET.
