@@ -115,8 +115,31 @@ exports.car_update_post = [
     body("price", "Price must not be empty.").trim().isLength({ min: 1 }).escape(),
     body("distance", "Mileage must not be empty.").trim().isLength({ min: 1 }).escape(),
     body("condition", "Condition must not be empty.").trim().isLength({ min: 1 }).escape(),
-    
+
     asyncHandler(async(req, res, next) => {
-        res.send("NOT IMPLEMENTED: Car update POST");
+        const errors = validationResult(req);
+        const car = new Car({
+            make: req.body.make,
+            model: req.body.model,
+            year: req.body.year,
+            price: req.body.price,
+            distance: req.body.distance,
+            condition: req.body.condition,
+            _id: req.params.id
+        })
+
+        if (!errors.isEmpty()) {
+            res.render("car_update", {
+                title: "Update Car",
+                car: car,
+                errors: errors.array(),
+            });
+            return;
+        } else {
+            // Data from form is valid. Update the record.
+            const updateCar = await Car.findByIdAndUpdate(req.params.id, car, {});
+            //redirect to the car detail page
+            res.redirect(updateCar.url);
+        }
     }),
 ]
