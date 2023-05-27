@@ -45,6 +45,7 @@ exports.car_create_post = [
 
     asyncHandler(async(req, res, next) => {
     const errors = validationResult(req);
+    const conditionsArr = ["New", "Used"];
     const car = new Car({
         make: req.body.make,
         model: req.body.model,
@@ -57,7 +58,8 @@ exports.car_create_post = [
         res.render("car_form", {
             title: "Create Car",
             car: car,
-            errors: errors.array()
+            errors: errors.array(),
+            conditions: conditionsArr
         });
         return;
     } else {
