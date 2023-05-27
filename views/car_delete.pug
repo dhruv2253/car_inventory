@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 #{car.year} #{car.make} #{car.model} 
+  p Delete this car?
+  form(method='POST', action="")
+    div.form-group
+        input#carid.form-control(type='hidden', name='carid', required='true', value=car._id)
+    button.btn.btn-primary(type='submit', onclick='console.log("Form submitted")') Delete
+  hr
