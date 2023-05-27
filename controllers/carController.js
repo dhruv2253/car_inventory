@@ -46,7 +46,7 @@ exports.car_create_post = [
     body("model", "Model must not be empty.").trim().isLength({ min: 1 }).escape(),
     body("year", "Year must not be empty.").trim().isLength({ min: 1 }).escape(),
     body("price", "Price must not be empty.").trim().isLength({ min: 1 }).escape(),
-    body("distance", "Distance must not be empty.").trim().isLength({ min: 1 }).escape(),
+    body("distance", "Mileage must not be empty.").trim().isLength({ min: 1 }).escape(),
     body("condition", "Condition must not be empty.").trim().isLength({ min: 1 }).escape(),
 
     asyncHandler(async(req, res, next) => {
