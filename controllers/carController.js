@@ -103,7 +103,7 @@ exports.car_update_get = asyncHandler(async(req, res, next) => {
         res.redirect("/catalog/cars");
     }
         
-    res.render("car_update", { title: "Update Car", car: car});
+    res.render("car_form", { title: "Update Car", car: car});
 });
 
 // Handle car update on POST.
@@ -129,7 +129,7 @@ exports.car_update_post = [
         })
 
         if (!errors.isEmpty()) {
-            res.render("car_update", {
+            res.render("car_form", {
                 title: "Update Car",
                 car: car,
                 errors: errors.array(),
