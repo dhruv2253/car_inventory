@@ -1,10 +1,16 @@
 extends layout
 
 block content
-  h1 #{car.year} #{car.make} #{car.model} 
 
-  p #[strong Price:] #{car.price}
-  p #[strong Mileage:] #{car.distance}
-  p #[strong Condition:] #{car.condition}
-  p 
-     a(href=car.url+'/delete') Delete car
+    h1 #{car.year} #{car.make} #{car.model} 
+
+    p #[strong Price:] #{car.price}
+    p #[strong Mileage:] #{car.distance}
+    p #[strong Condition:] #{car.condition}
+    hr
+    p
+        a(href=car.url+'/delete') Delete car
+    p
+        a(href=car.url+'/update') Update car
+
+
